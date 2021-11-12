@@ -1,13 +1,24 @@
+import { removeDataRepetidas } from "../service/data.js"
+import { criaData } from "./criaData.js"
 import { Tarefa } from "./criaTarefa.js"
+
 
 export const carregaTarefa = () => {
     const lista = document.querySelector('[data-list]')
 
     const tarefasCadastradas = JSON.parse(localStorage.getItem('tarefas')) || []
 
-    tarefasCadastradas.forEach((tarefa) => {
-        lista.appendChild(Tarefa(tarefa));
-        // acessar a li dentro de um elemento pai
-        // o appendchild sempre coloca o conteudo por ultimo
+    lista.innerHTML = "" // limpa o valor do imput porque chama 2x o carregaTarefa
+    const datasUnicas = removeDataRepetidas(tarefasCadastradas)
+
+    datasUnicas.forEach((dia) => {
+
+        lista.appendChild(criaData(dia));
     })
 }
+
+
+
+// lista.appendChild(criaData(dia));
+// acessar a li dentro de um elemento pai
+// o appendchild sempre coloca o conteudo por ultimo

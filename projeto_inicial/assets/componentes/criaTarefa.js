@@ -1,7 +1,6 @@
+import { carregaTarefa } from "./carregaTarefa.js";
 import BotaoConclui from "./concluiTarefa.js";
 import BotaoDeleta from "./deletaTarefa.js";
-
-
 
 export const handleNovoItem = (evento) => {
     evento.preventDefault();
@@ -29,8 +28,9 @@ export const handleNovoItem = (evento) => {
 
     input.value = '';
 
-}
+    carregaTarefa()
 
+}
 
 export const Tarefa = ({ valor, dataFormatada }) => {
     const tarefa = document.createElement('li');
