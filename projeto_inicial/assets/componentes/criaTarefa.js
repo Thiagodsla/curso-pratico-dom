@@ -6,8 +6,8 @@ import BotaoDeleta from "./deletaTarefa.js";
 export const handleNovoItem = (evento) => {
     evento.preventDefault();
 
-    const tarefas = localStorage.getItem('tarefas')
-    const lista = document.querySelector('[data-list]')
+    const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [] // || [] <- se nao tiver nada inicializa como array vazio
+
     const input = document.querySelector('[data-form-input]');
     const valor = input.value; // .value recebe o valor do input
 
@@ -21,13 +21,11 @@ export const handleNovoItem = (evento) => {
         dataFormatada
     }
 
-    const criaTarefa = Tarefa(dados)
+    const tarefasAtualizadas = [...tarefas, dados]
 
-    lista.appendChild(criaTarefa);
-    // acessar a li dentro de um elemento pai
-    // o appendchild sempre coloca o conteudo por ultimo
 
-    localStorage.setItem('tarefas', JSON.stringify(tarefas))
+
+    localStorage.setItem('tarefas', JSON.stringify(tarefasAtualizadas))
 
     input.value = '';
 
