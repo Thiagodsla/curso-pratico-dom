@@ -1,6 +1,6 @@
-import { removeDataRepetidas } from "../service/data.js"
+import { ordenaDatas, removeDatasRepetidas } from "../service/data.js"
 import { criaData } from "./criaData.js"
-import { Tarefa } from "./criaTarefa.js"
+
 
 
 export const carregaTarefa = () => {
@@ -9,8 +9,8 @@ export const carregaTarefa = () => {
     const tarefasCadastradas = JSON.parse(localStorage.getItem('tarefas')) || []
 
     lista.innerHTML = "" // limpa o valor do imput porque chama 2x o carregaTarefa
-    const datasUnicas = removeDataRepetidas(tarefasCadastradas)
-
+    const datasUnicas = removeDatasRepetidas(tarefasCadastradas)
+    ordenaDatas(datasUnicas)
     datasUnicas.forEach((dia) => {
 
         lista.appendChild(criaData(dia));
