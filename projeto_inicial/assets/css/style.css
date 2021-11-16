@@ -1,10 +1,15 @@
 body {
+    margin: 0px;
+    background-color: #0B2027;
+}
+
+body {
     margin: 0;
 }
 
 .app {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 100vw;
     min-height: 100vh;
@@ -62,7 +67,7 @@ body {
 
 .app {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 100vw;
     min-height: 100vh;
@@ -161,6 +166,28 @@ body {
     margin: 0;
 }
 
+.content-data {
+    color: #F6F1D1;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+    padding: 1rem 3rem;
+}
+
 .task.done .content {
     text-decoration: line-through;
+}
+
+@media only screen and (max-width: 500px) {
+    .form {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-button {
+        width: 40%;
+        align-self: flex-end;
+    }
+    .todo-list {
+        min-width: 90%;
+    }
 }
